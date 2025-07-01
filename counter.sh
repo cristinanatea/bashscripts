@@ -1,22 +1,19 @@
 #!/bin/bash
 
-
-
 FILE=/home/cristina/Downloads/bashcrc
-string_to_search="StrictHostKeyChecking"
+string_to_search="lib"
 count=0
 
-IFS=$'\n'
-for LINE in $(cat "$FILE")
+while IFS= read -r LINE; 
 do
 echo "$LINE"
 
 if [[ "$LINE" == *"$string_to_search"* ]];
         then
-                ((count = count + 1))
+                ((count++))
 fi
 
-done
+done < "$FILE"
 
 echo "The number of occurences of the string is $count"
 
